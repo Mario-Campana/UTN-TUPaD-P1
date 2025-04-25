@@ -1,0 +1,8 @@
+#6) Crear una lista con números del 10 al 30 (incluído), haciendo saltos de 5 en 5 y mostrar por 
+#pantalla los dos primeros.
+
+
+#Creo la lista en una variable usando la función list y la función range
+lista = list(range(10,31,5))
+#Imprimo los dos primeros elementos de la lista
+print(lista[0], lista[1])
