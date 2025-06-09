@@ -104,7 +104,7 @@ def busqueda_binaria(id_buscado):
 
         if clave_medio == id_buscado:
             tiempo_final = time.time()
-            duracion_busqueda_binaria = (tiempo_final - tiempo_inicial) * 1000
+            duracion_busqueda_binaria = (tiempo_final - tiempo_inicial) *1000
             return valor_medio, duracion_busqueda_binaria
         elif id_buscado < clave_medio:
             derecha = medio - 1
@@ -133,6 +133,7 @@ def recorrido_preorden(lista_de_nodos):
     Recorre el árbol en pre-orden: raíz -> hijo izquierdo -> hijo derecho.
     Útil para clonar o copiar la estructura del árbol.
     """
+   
     if lista_de_nodos is None or lista_de_nodos == []:
         return
 
@@ -159,7 +160,6 @@ def recorrido_postorden(lista_de_nodos):
         recorrido_postorden(lista_de_nodos[2]) # Recorre hijo derecho
 
     print(lista_de_nodos[0])                   # Visita la raíz (nodo actual)
-
 #endregion
 
 #region Programa Principal
@@ -188,12 +188,18 @@ while opcion != "0":
 #            print(f"\nOpción {opcion} completada. Hasta luego!")
         else:
             print("No se encontró elemento.")
-#            print(f"\nOpción {opcion} completada. Hasta luego!")
+#           print(f"\nOpción {opcion} completada. Hasta luego!")
         break
 
     elif (opcion == "3"):
         limpiar_pantalla()
-        id_buscado = int(input("Ingrese ID del alumno a buscar:"))
+        while True:
+            entrada = input("Ingrese ID del alumno a buscar: ")
+            if entrada.isdigit():
+                id_buscado = int(entrada)
+                break
+            else:
+                print("Entrada inválida. Por favor ingrese solo números enteros.")
         apellido_encontrado, duracion_busqueda_lineal = busqueda_lineal(id_buscado)
         apellido_encontrado, duracion_busqueda_binaria = busqueda_binaria(id_buscado)
         if apellido_encontrado is not None:
@@ -208,7 +214,7 @@ while opcion != "0":
         print("Recorrido in-orden:")
         recorrido_inorden(provincia_lista)
         print("\nRecorrido pre-orden:")
-        recorrido_preorden(provincia_lista)
+        imprimir_arbol(provincia_lista)                 #reemplaza recorrido_preorden(provincia_lista) para que se vea arbol
         print("\nRecorrido post-orden:")
         recorrido_postorden(provincia_lista)
         break
